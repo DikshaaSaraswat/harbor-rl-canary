@@ -1,0 +1,14 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.16, pytest-8.4.1, pluggy-1.7.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 3 items
+
+../tests/test_outputs.py ...                                             [100%]
+
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED ../tests/test_outputs.py::test_accepts_positional_csv_path
+PASSED ../tests/test_outputs.py::test_normalizes_status_text
+PASSED ../tests/test_outputs.py::test_selects_latest_timestamp_instant_across_offsets
+============================== 3 passed in 0.22s ===============================

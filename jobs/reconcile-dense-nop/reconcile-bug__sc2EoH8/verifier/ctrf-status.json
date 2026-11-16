@@ -1,0 +1,35 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 1,
+            "passed": 0,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1794806633.4129593,
+            "stop": 1794806633.530162
+        },
+        "tests": [
+            {
+                "name": "test_outputs.py::test_status_normalization_and_half_up_rounding",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.07468648099984421,
+                "start": 1794806633.436837,
+                "stop": 1794806633.529881,
+                "retries": 0,
+                "file_path": "test_outputs.py",
+                "tags": [
+                    "category_status"
+                ],
+                "trace": "@pytest.mark.category_status\n    def test_status_normalization_and_half_up_rounding():\n>       payload = run_cli(\n            \"tx_id,timestamp,amount,status\\n\"\n            \"status-a,2024-04-03T08:00:00+00:00,1.005, SUCCESS  \\n\"\n            \"status-b,2024-04-03T08:01:00+00:00,0.004, success\\n\"\n            \"status-c,2024-04-03T08:02:00+00:00,80.00,  FaIlEd \\n\"\n            \"status-d,2024-04-03T08:03:00+00:00,50.00, pending \\n\"\n        )\n\n/tests/test_outputs.py:57: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\ncsv_text = 'tx_id,timestamp,amount,status\\nstatus-a,2024-04-03T08:00:00+00:00,1.005, SUCCESS  \\nstatus-b,2024-04-03T08:01:00+00:0...004, success\\nstatus-c,2024-04-03T08:02:00+00:00,80.00,  FaIlEd \\nstatus-d,2024-04-03T08:03:00+00:00,50.00, pending \\n'\narguments = ()\nfixture = <tempfile._TemporaryFileWrapper object at 0x7fb9b67ce450>\nresult = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/tmp3pyz5wpk.csv'], returncode=2, stdout='', stderr='usage: reconcile.py [-h] --input INPUT\\nreconcile.py: error: the following arguments are required: --input\\n')\n@py_assert1 = 2\n\n    def run_cli(csv_text, *arguments):\n        with tempfile.NamedTemporaryFile(\n            \"w\", encoding=\"utf-8\", newline=\"\", suffix=\".csv\"\n        ) as fixture:\n            fixture.write(csv_text)\n            fixture.flush()\n            result = subprocess.run(\n                [sys.executable, str(PROGRAM), *arguments, fixture.name],\n                capture_output=True,\n                text=True,\n                check=False,\n            )\n>       assert result.returncode == 0, f\"CLI failed: {result.stderr}\"\nE       AssertionError: CLI failed: usage: reconcile.py [-h] --input INPUT\nE         reconcile.py: error: the following arguments are required: --input\nE         \nE       assert 2 == 0\nE        +  where 2 = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/tmp3pyz5wpk.csv'], returncode=2, stdout='', stderr='usage: reconcile.py [-h] --input INPUT\\nreconcile.py: error: the following arguments are required: --input\\n').returncode\n\n/tests/test_outputs.py:29: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

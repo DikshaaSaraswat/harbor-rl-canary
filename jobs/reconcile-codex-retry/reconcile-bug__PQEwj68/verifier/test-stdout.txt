@@ -1,0 +1,164 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.16, pytest-8.4.1, pluggy-1.7.0
+rootdir: /tests
+configfile: pytest.ini
+plugins: json-ctrf-0.3.5
+collected 3 items / 2 deselected / 1 selected
+
+../tests/test_outputs.py F                                               [100%]
+
+=================================== FAILURES ===================================
+___________________________ test_positional_csv_path ___________________________
+
+    @pytest.mark.category_cli
+    def test_positional_csv_path():
+>       payload = run_cli(
+            "tx_id,timestamp,amount,status\n"
+            "independent-a,2024-04-03T08:00:00+00:00,6.40,success\n"
+            "independent-b,2024-04-03T08:01:00+00:00,9.00,failed\n"
+        )
+
+/tests/test_outputs.py:47: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+csv_text = 'tx_id,timestamp,amount,status\nindependent-a,2024-04-03T08:00:00+00:00,6.40,success\nindependent-b,2024-04-03T08:01:00+00:00,9.00,failed\n'
+arguments = ()
+fixture = <tempfile._TemporaryFileWrapper object at 0x7f25408bc200>
+result = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/tmp39cp382i.csv'], returncode=2, stdout='', stderr='usage: reconcile.py [-h] --input INPUT\nreconcile.py: error: the following arguments are required: --input\n')
+@py_assert1 = 2
+
+    def run_cli(csv_text, *arguments):
+        with tempfile.NamedTemporaryFile(
+            "w", encoding="utf-8", newline="", suffix=".csv"
+        ) as fixture:
+            fixture.write(csv_text)
+            fixture.flush()
+            result = subprocess.run(
+                [sys.executable, str(PROGRAM), *arguments, fixture.name],
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+>       assert result.returncode == 0, f"CLI failed: {result.stderr}"
+E       AssertionError: CLI failed: usage: reconcile.py [-h] --input INPUT
+E         reconcile.py: error: the following arguments are required: --input
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/tmp39cp382i.csv'], returncode=2, stdout='', stderr='usage: reconcile.py [-h] --input INPUT\nreconcile.py: error: the following arguments are required: --input\n').returncode
+
+/tests/test_outputs.py:29: AssertionError
+=========================== short test summary info ============================
+FAILED ../tests/test_outputs.py::test_positional_csv_path - AssertionError: C...
+======================= 1 failed, 2 deselected in 0.26s ========================
+============================= test session starts ==============================
+platform linux -- Python 3.12.16, pytest-8.4.1, pluggy-1.7.0
+rootdir: /tests
+configfile: pytest.ini
+plugins: json-ctrf-0.3.5
+collected 3 items / 2 deselected / 1 selected
+
+../tests/test_outputs.py F                                               [100%]
+
+=================================== FAILURES ===================================
+________________ test_status_normalization_and_half_up_rounding ________________
+
+    @pytest.mark.category_status
+    def test_status_normalization_and_half_up_rounding():
+>       payload = run_cli(
+            "tx_id,timestamp,amount,status\n"
+            "status-a,2024-04-03T08:00:00+00:00,1.005, SUCCESS  \n"
+            "status-b,2024-04-03T08:01:00+00:00,0.004, success\n"
+            "status-c,2024-04-03T08:02:00+00:00,80.00,  FaIlEd \n"
+            "status-d,2024-04-03T08:03:00+00:00,50.00, pending \n"
+        )
+
+/tests/test_outputs.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+csv_text = 'tx_id,timestamp,amount,status\nstatus-a,2024-04-03T08:00:00+00:00,1.005, SUCCESS  \nstatus-b,2024-04-03T08:01:00+00:0...004, success\nstatus-c,2024-04-03T08:02:00+00:00,80.00,  FaIlEd \nstatus-d,2024-04-03T08:03:00+00:00,50.00, pending \n'
+arguments = ()
+fixture = <tempfile._TemporaryFileWrapper object at 0x7ff4c054b2f0>
+result = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/tmpln383j_a.csv'], returncode=2, stdout='', stderr='usage: reconcile.py [-h] --input INPUT\nreconcile.py: error: the following arguments are required: --input\n')
+@py_assert1 = 2
+
+    def run_cli(csv_text, *arguments):
+        with tempfile.NamedTemporaryFile(
+            "w", encoding="utf-8", newline="", suffix=".csv"
+        ) as fixture:
+            fixture.write(csv_text)
+            fixture.flush()
+            result = subprocess.run(
+                [sys.executable, str(PROGRAM), *arguments, fixture.name],
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+>       assert result.returncode == 0, f"CLI failed: {result.stderr}"
+E       AssertionError: CLI failed: usage: reconcile.py [-h] --input INPUT
+E         reconcile.py: error: the following arguments are required: --input
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/tmpln383j_a.csv'], returncode=2, stdout='', stderr='usage: reconcile.py [-h] --input INPUT\nreconcile.py: error: the following arguments are required: --input\n').returncode
+
+/tests/test_outputs.py:29: AssertionError
+=========================== short test summary info ============================
+FAILED ../tests/test_outputs.py::test_status_normalization_and_half_up_rounding
+======================= 1 failed, 2 deselected in 0.11s ========================
+============================= test session starts ==============================
+platform linux -- Python 3.12.16, pytest-8.4.1, pluggy-1.7.0
+rootdir: /tests
+configfile: pytest.ini
+plugins: json-ctrf-0.3.5
+collected 3 items / 2 deselected / 1 selected
+
+../tests/test_outputs.py F                                               [100%]
+
+=================================== FAILURES ===================================
+___________________ test_latest_timezone_aware_instant_wins ____________________
+
+    @pytest.mark.category_timestamp
+    def test_latest_timezone_aware_instant_wins():
+>       payload = run_cli(
+            "tx_id,timestamp,amount,status\n"
+            # The later instant appears first; the later CSV row is actually older.
+            "offset,2024-04-03T08:30:00-04:00,3.00,failed\n"
+            "offset,2024-04-03T12:00:00+00:00,10.00,success\n"
+            # These are the same instant, so the later CSV row must win.
+            "tie,2024-04-03T09:00:00+00:00,20.00,success\n"
+            "tie,2024-04-03T04:00:00-05:00,7.25,failed\n"
+            # A separate transaction ensures the expected aggregate is distinctive.
+            "keep,2024-04-03T09:15:00+00:00,2.00,success\n"
+        )
+
+/tests/test_outputs.py:70: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+csv_text = 'tx_id,timestamp,amount,status\noffset,2024-04-03T08:30:00-04:00,3.00,failed\noffset,2024-04-03T12:00:00+00:00,10.00,s...09:00:00+00:00,20.00,success\ntie,2024-04-03T04:00:00-05:00,7.25,failed\nkeep,2024-04-03T09:15:00+00:00,2.00,success\n'
+arguments = ()
+fixture = <tempfile._TemporaryFileWrapper object at 0x7f777e0192e0>
+result = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/tmpvcmkl2jw.csv'], returncode=2, stdout='', stderr='usage: reconcile.py [-h] --input INPUT\nreconcile.py: error: the following arguments are required: --input\n')
+@py_assert1 = 2
+
+    def run_cli(csv_text, *arguments):
+        with tempfile.NamedTemporaryFile(
+            "w", encoding="utf-8", newline="", suffix=".csv"
+        ) as fixture:
+            fixture.write(csv_text)
+            fixture.flush()
+            result = subprocess.run(
+                [sys.executable, str(PROGRAM), *arguments, fixture.name],
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+>       assert result.returncode == 0, f"CLI failed: {result.stderr}"
+E       AssertionError: CLI failed: usage: reconcile.py [-h] --input INPUT
+E         reconcile.py: error: the following arguments are required: --input
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/tmpvcmkl2jw.csv'], returncode=2, stdout='', stderr='usage: reconcile.py [-h] --input INPUT\nreconcile.py: error: the following arguments are required: --input\n').returncode
+
+/tests/test_outputs.py:29: AssertionError
+=========================== short test summary info ============================
+FAILED ../tests/test_outputs.py::test_latest_timezone_aware_instant_wins - As...
+======================= 1 failed, 2 deselected in 0.11s ========================

@@ -1,0 +1,47 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 3,
+            "passed": 3,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1794803725.5682676,
+            "stop": 1794803725.793624
+        },
+        "tests": [
+            {
+                "name": "test_outputs.py::test_accepts_positional_csv_path",
+                "status": "passed",
+                "duration": 0.06604551899999933,
+                "start": 1794803725.6006057,
+                "stop": 1794803725.6671374,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_normalizes_status_text",
+                "status": "passed",
+                "duration": 0.060290587000054074,
+                "start": 1794803725.6677012,
+                "stop": 1794803725.7284076,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_selects_latest_timestamp_instant_across_offsets",
+                "status": "passed",
+                "duration": 0.0639377979996425,
+                "start": 1794803725.7289224,
+                "stop": 1794803725.7932706,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            }
+        ]
+    }
+}

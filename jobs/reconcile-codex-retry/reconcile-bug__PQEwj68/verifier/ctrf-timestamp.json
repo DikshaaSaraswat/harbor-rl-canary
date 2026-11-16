@@ -1,0 +1,35 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 1,
+            "passed": 0,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1794811004.1021593,
+            "stop": 1794811004.2146864
+        },
+        "tests": [
+            {
+                "name": "test_outputs.py::test_latest_timezone_aware_instant_wins",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.06907674099988981,
+                "start": 1794811004.1250257,
+                "stop": 1794811004.2143784,
+                "retries": 0,
+                "file_path": "test_outputs.py",
+                "tags": [
+                    "category_timestamp"
+                ],
+                "trace": "@pytest.mark.category_timestamp\n    def test_latest_timezone_aware_instant_wins():\n>       payload = run_cli(\n            \"tx_id,timestamp,amount,status\\n\"\n            # The later instant appears first; the later CSV row is actually older.\n            \"offset,2024-04-03T08:30:00-04:00,3.00,failed\\n\"\n            \"offset,2024-04-03T12:00:00+00:00,10.00,success\\n\"\n            # These are the same instant, so the later CSV row must win.\n            \"tie,2024-04-03T09:00:00+00:00,20.00,success\\n\"\n            \"tie,2024-04-03T04:00:00-05:00,7.25,failed\\n\"\n            # A separate transaction ensures the expected aggregate is distinctive.\n            \"keep,2024-04-03T09:15:00+00:00,2.00,success\\n\"\n        )\n\n/tests/test_outputs.py:70: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\ncsv_text = 'tx_id,timestamp,amount,status\\noffset,2024-04-03T08:30:00-04:00,3.00,failed\\noffset,2024-04-03T12:00:00+00:00,10.00,s...09:00:00+00:00,20.00,success\\ntie,2024-04-03T04:00:00-05:00,7.25,failed\\nkeep,2024-04-03T09:15:00+00:00,2.00,success\\n'\narguments = ()\nfixture = <tempfile._TemporaryFileWrapper object at 0x7f777e0192e0>\nresult = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/tmpvcmkl2jw.csv'], returncode=2, stdout='', stderr='usage: reconcile.py [-h] --input INPUT\\nreconcile.py: error: the following arguments are required: --input\\n')\n@py_assert1 = 2\n\n    def run_cli(csv_text, *arguments):\n        with tempfile.NamedTemporaryFile(\n            \"w\", encoding=\"utf-8\", newline=\"\", suffix=\".csv\"\n        ) as fixture:\n            fixture.write(csv_text)\n            fixture.flush()\n            result = subprocess.run(\n                [sys.executable, str(PROGRAM), *arguments, fixture.name],\n                capture_output=True,\n                text=True,\n                check=False,\n            )\n>       assert result.returncode == 0, f\"CLI failed: {result.stderr}\"\nE       AssertionError: CLI failed: usage: reconcile.py [-h] --input INPUT\nE         reconcile.py: error: the following arguments are required: --input\nE         \nE       assert 2 == 0\nE        +  where 2 = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/tmpvcmkl2jw.csv'], returncode=2, stdout='', stderr='usage: reconcile.py [-h] --input INPUT\\nreconcile.py: error: the following arguments are required: --input\\n').returncode\n\n/tests/test_outputs.py:29: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

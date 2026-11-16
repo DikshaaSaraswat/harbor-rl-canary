@@ -1,0 +1,56 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 3,
+            "passed": 0,
+            "failed": 3,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1794803827.5259306,
+            "stop": 1794803827.9371374
+        },
+        "tests": [
+            {
+                "name": "test_outputs.py::test_accepts_positional_csv_path",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.11646804399970279,
+                "start": 1794803827.5618346,
+                "stop": 1794803827.7389183,
+                "retries": 0,
+                "file_path": "test_outputs.py",
+                "trace": "def test_accepts_positional_csv_path():\n>       payload = run_cli(\n            \"tx_id,timestamp,amount,status\\n\"\n            \"a,2025-01-01T00:00:00+00:00,3.25,success\\n\"\n            \"b,2025-01-01T00:01:00+00:00,1.00,failed\\n\"\n        )\n\n/tests/test_outputs.py:43: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\ncsv_text = 'tx_id,timestamp,amount,status\\na,2025-01-01T00:00:00+00:00,3.25,success\\nb,2025-01-01T00:01:00+00:00,1.00,failed\\n'\narguments = ()\nfixture = <tempfile._TemporaryFileWrapper object at 0x7fb9c3106600>\nresult = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/tmp3r0ea9y5.csv'], returncode=2, stdout='', stderr='usage: reconcile.py [-h] --input INPUT\\nreconcile.py: error: the following arguments are required: --input\\n')\n@py_assert1 = 2\n\n    def run_cli(csv_text, *arguments):\n        with tempfile.NamedTemporaryFile(\"w\", encoding=\"utf-8\", newline=\"\", suffix=\".csv\") as fixture:\n            fixture.write(csv_text)\n            fixture.flush()\n            result = subprocess.run(\n                [sys.executable, str(PROGRAM), *arguments, fixture.name],\n                capture_output=True,\n                text=True,\n                check=False,\n            )\n>       assert result.returncode == 0, f\"CLI failed: {result.stderr}\"\nE       AssertionError: CLI failed: usage: reconcile.py [-h] --input INPUT\nE         reconcile.py: error: the following arguments are required: --input\nE         \nE       assert 2 == 0\nE        +  where 2 = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/tmp3r0ea9y5.csv'], returncode=2, stdout='', stderr='usage: reconcile.py [-h] --input INPUT\\nreconcile.py: error: the following arguments are required: --input\\n').returncode\n\n/tests/test_outputs.py:27: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_outputs.py::test_normalizes_status_text",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.08654164999916247,
+                "start": 1794803827.7395766,
+                "stop": 1794803827.8399177,
+                "retries": 0,
+                "file_path": "test_outputs.py",
+                "trace": "def test_normalizes_status_text():\n>       payload = run_cli(\n            \"tx_id,timestamp,amount,status\\n\"\n            \"a,2025-01-01T00:00:00+00:00,1.005, SUCCESS \\n\"\n            \"b,2025-01-01T00:01:00+00:00,7.00, Failed\\n\"\n            \"c,2025-01-01T00:02:00+00:00,90.00, pending \\n\"\n        )\n\n/tests/test_outputs.py:52: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\ncsv_text = 'tx_id,timestamp,amount,status\\na,2025-01-01T00:00:00+00:00,1.005, SUCCESS \\nb,2025-01-01T00:01:00+00:00,7.00, Failed\\nc,2025-01-01T00:02:00+00:00,90.00, pending \\n'\narguments = ()\nfixture = <tempfile._TemporaryFileWrapper object at 0x7fb9c2ff75c0>\nresult = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/tmp8yayvi0n.csv'], returncode=2, stdout='', stderr='usage: reconcile.py [-h] --input INPUT\\nreconcile.py: error: the following arguments are required: --input\\n')\n@py_assert1 = 2\n\n    def run_cli(csv_text, *arguments):\n        with tempfile.NamedTemporaryFile(\"w\", encoding=\"utf-8\", newline=\"\", suffix=\".csv\") as fixture:\n            fixture.write(csv_text)\n            fixture.flush()\n            result = subprocess.run(\n                [sys.executable, str(PROGRAM), *arguments, fixture.name],\n                capture_output=True,\n                text=True,\n                check=False,\n            )\n>       assert result.returncode == 0, f\"CLI failed: {result.stderr}\"\nE       AssertionError: CLI failed: usage: reconcile.py [-h] --input INPUT\nE         reconcile.py: error: the following arguments are required: --input\nE         \nE       assert 2 == 0\nE        +  where 2 = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/tmp8yayvi0n.csv'], returncode=2, stdout='', stderr='usage: reconcile.py [-h] --input INPUT\\nreconcile.py: error: the following arguments are required: --input\\n').returncode\n\n/tests/test_outputs.py:27: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_outputs.py::test_selects_latest_timestamp_instant_across_offsets",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0851591369992093,
+                "start": 1794803827.8406055,
+                "stop": 1794803827.9364312,
+                "retries": 0,
+                "file_path": "test_outputs.py",
+                "trace": "def test_selects_latest_timestamp_instant_across_offsets():\n>       payload = run_cli(\n            \"tx_id,timestamp,amount,status\\n\"\n            \"a,2025-01-01T12:00:00+00:00,8.00,success\\n\"\n            \"a,2025-01-01T07:30:00-05:00,2.50,success\\n\"\n            \"b,2025-01-01T10:00:00+00:00,4.00,failed\\n\"\n            \"b,2025-01-01T09:00:00+00:00,5.00,success\\n\"\n        )\n\n/tests/test_outputs.py:62: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\ncsv_text = 'tx_id,timestamp,amount,status\\na,2025-01-01T12:00:00+00:00,8.00,success\\na,2025-01-01T07:30:00-05:00,2.50,success\\nb,2025-01-01T10:00:00+00:00,4.00,failed\\nb,2025-01-01T09:00:00+00:00,5.00,success\\n'\narguments = ()\nfixture = <tempfile._TemporaryFileWrapper object at 0x7fb9c2e31cd0>\nresult = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/tmpcyl6913p.csv'], returncode=2, stdout='', stderr='usage: reconcile.py [-h] --input INPUT\\nreconcile.py: error: the following arguments are required: --input\\n')\n@py_assert1 = 2\n\n    def run_cli(csv_text, *arguments):\n        with tempfile.NamedTemporaryFile(\"w\", encoding=\"utf-8\", newline=\"\", suffix=\".csv\") as fixture:\n            fixture.write(csv_text)\n            fixture.flush()\n            result = subprocess.run(\n                [sys.executable, str(PROGRAM), *arguments, fixture.name],\n                capture_output=True,\n                text=True,\n                check=False,\n            )\n>       assert result.returncode == 0, f\"CLI failed: {result.stderr}\"\nE       AssertionError: CLI failed: usage: reconcile.py [-h] --input INPUT\nE         reconcile.py: error: the following arguments are required: --input\nE         \nE       assert 2 == 0\nE        +  where 2 = CompletedProcess(args=['/usr/local/bin/python', '/app/reconcile.py', '/tmp/tmpcyl6913p.csv'], returncode=2, stdout='', stderr='usage: reconcile.py [-h] --input INPUT\\nreconcile.py: error: the following arguments are required: --input\\n').returncode\n\n/tests/test_outputs.py:27: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

@@ -1,0 +1,2 @@
+Skipping image OS validation for hb__71c255eb433cfdd67ca228c167be7bab: docker inspect returned 1
+Running command: apt-get update && apt-get install -y curl nodejs npm ripgrep

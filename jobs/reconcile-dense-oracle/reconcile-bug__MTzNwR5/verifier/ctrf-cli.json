@@ -1,0 +1,32 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 1,
+            "passed": 1,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1794805825.398859,
+            "stop": 1794805825.4730039
+        },
+        "tests": [
+            {
+                "name": "test_outputs.py::test_positional_csv_path",
+                "status": "passed",
+                "duration": 0.04876599600083864,
+                "start": 1794805825.4234967,
+                "stop": 1794805825.4726853,
+                "retries": 0,
+                "file_path": "test_outputs.py",
+                "tags": [
+                    "category_cli"
+                ]
+            }
+        ]
+    }
+}
