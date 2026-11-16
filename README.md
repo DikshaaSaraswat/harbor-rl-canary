@@ -29,3 +29,6 @@ The requested three-trial LLM baseline and ablation comparison remain incomplete
 
 ## Demo
 Loom URL: Pending.
+
+## Evaluation Summary
+See [jobs_summary/validation_summary.md](jobs_summary/validation_summary.md) for the recorded Oracle and Nop validation results.
