@@ -1,0 +1,4 @@
+tx_id,timestamp,amount,status
+txn-1001,2025-01-15T10:00:00+00:00,18.25,success
+txn-1002,2025-01-15T10:05:00-05:00,42.00,failed
+txn-1003,2025-01-15T15:10:00+00:00,5.50,pending
