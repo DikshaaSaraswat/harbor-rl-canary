@@ -81,7 +81,7 @@ A baseline provides a reference for normal agent performance, while an oracle pr
 
 ## Demo
 
-Loom demonstration: Pending recording.
+Loom demonstration: https://www.loom.com/share/54fe585047704f959b0291490dbbfbe5
 
 ## Purpose
 
