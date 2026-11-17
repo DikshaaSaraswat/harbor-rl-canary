@@ -1,0 +1,39 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.16, pytest-8.4.1, pluggy-1.7.0
+rootdir: /tests
+configfile: pytest.ini
+plugins: json-ctrf-0.3.5
+collected 3 items / 2 deselected / 1 selected
+
+../tests/test_outputs.py .                                               [100%]
+
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED ../tests/test_outputs.py::test_positional_csv_path
+======================= 1 passed, 2 deselected in 0.07s ========================
+============================= test session starts ==============================
+platform linux -- Python 3.12.16, pytest-8.4.1, pluggy-1.7.0
+rootdir: /tests
+configfile: pytest.ini
+plugins: json-ctrf-0.3.5
+collected 3 items / 2 deselected / 1 selected
+
+../tests/test_outputs.py .                                               [100%]
+
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED ../tests/test_outputs.py::test_status_normalization_and_half_up_rounding
+======================= 1 passed, 2 deselected in 0.07s ========================
+============================= test session starts ==============================
+platform linux -- Python 3.12.16, pytest-8.4.1, pluggy-1.7.0
+rootdir: /tests
+configfile: pytest.ini
+plugins: json-ctrf-0.3.5
+collected 3 items / 2 deselected / 1 selected
+
+../tests/test_outputs.py .                                               [100%]
+
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED ../tests/test_outputs.py::test_latest_timezone_aware_instant_wins
+======================= 1 passed, 2 deselected in 0.06s ========================

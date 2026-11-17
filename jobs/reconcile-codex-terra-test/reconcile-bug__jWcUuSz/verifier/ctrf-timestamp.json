@@ -1,0 +1,32 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 1,
+            "passed": 1,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1794917980.4977217,
+            "stop": 1794917980.556244
+        },
+        "tests": [
+            {
+                "name": "test_outputs.py::test_latest_timezone_aware_instant_wins",
+                "status": "passed",
+                "duration": 0.04625819400007458,
+                "start": 1794917980.509345,
+                "stop": 1794917980.5559978,
+                "retries": 0,
+                "file_path": "test_outputs.py",
+                "tags": [
+                    "category_timestamp"
+                ]
+            }
+        ]
+    }
+}

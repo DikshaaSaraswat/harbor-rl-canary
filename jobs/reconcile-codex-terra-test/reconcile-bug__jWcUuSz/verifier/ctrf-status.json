@@ -1,0 +1,32 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 1,
+            "passed": 1,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1794917980.1063135,
+            "stop": 1794917980.173704
+        },
+        "tests": [
+            {
+                "name": "test_outputs.py::test_status_normalization_and_half_up_rounding",
+                "status": "passed",
+                "duration": 0.05325540400008322,
+                "start": 1794917980.119721,
+                "stop": 1794917980.1733365,
+                "retries": 0,
+                "file_path": "test_outputs.py",
+                "tags": [
+                    "category_status"
+                ]
+            }
+        ]
+    }
+}
