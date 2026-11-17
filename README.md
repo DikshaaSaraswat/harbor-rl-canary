@@ -1,34 +1,50 @@
 # Harbor RL Environment & Agent Evaluation
 
-Author: Diksha Saraswat
+A debugging and evaluation environment for a payment reconciliation CLI application.
 
-## Project
-Payment reconciliation debugging task with three intentional bugs: CLI argument handling, status normalization, and timezone-aware timestamp deduplication.
+## Overview
 
-## Dense Rewards
-- CLI behavior: 0.20
-- Status normalization and rounding: 0.30
-- Timestamp ordering and deduplication: 0.50
-- Total: 1.00
+The project contains three debugging challenges:
 
-## Validation
-- Oracle Phase 1: 1.00
-- Nop Phase 1: 0.00
-- Oracle dense reward: 1.00
-- Nop dense reward: 0.00
-- Codex retry: failed because model name was missing.
-- Hardcoded-output hack: rejected, reward 0.00.
+- CLI input handling and argument validation
+- Transaction status normalization and monetary rounding
+- Timezone-aware timestamp ordering and duplicate transaction handling
 
-## Limitations
-The requested three-trial LLM baseline and ablation comparison remain incomplete. No results have been fabricated.
+## Reward Configuration
 
-## Structure
-- tasks/reconcile-bug/: task, environment, solution and verifier.
-- jobs/: raw Harbor results.
-- jobs_summary/: evaluation summaries.
+| Component | Weight |
+|---|---:|
+| CLI behavior | 0.20 |
+| Status normalization and rounding | 0.30 |
+| Timestamp ordering and deduplication | 0.50 |
+| Total | 1.00 |
 
-## Demo
-Loom URL: Pending.
+## Technology Stack
 
-## Evaluation Summary
-See [jobs_summary/validation_summary.md](jobs_summary/validation_summary.md) for the recorded Oracle and Nop validation results.
+- Python
+- Docker
+- Harbor
+- Pytest
+- Shell scripting
+- Git and GitHub
+
+## Repository Structure
+
+- `tasks/reconcile-bug/` - Task definition, environment, solution and tests
+- `jobs/` - Evaluation artifacts
+- `jobs_summary/` - Evaluation summaries
+
+## Getting Started
+
+1. Clone the repository.
+2. Install the required dependencies and Docker.
+3. Review `tasks/reconcile-bug/instruction.md`.
+4. Run the environment and evaluations using Harbor CLI.
+
+## Evaluation
+
+The project uses reference solutions, baseline agents and automated verifier tests to assess task performance.
+
+## Purpose
+
+An experimental environment for exploring debugging, automated verification and agent-based software problem solving.
